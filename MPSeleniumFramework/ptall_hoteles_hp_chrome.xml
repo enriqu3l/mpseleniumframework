@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="HP_Suite" thread-count="3" parallel="tests">
+  <listeners>
+    <listener class-name="testlisteners.ListenerHealthCheck"></listener>
+  </listeners>
+  
+  <test name="HPPTCOMMX">
+  	<parameter name="url" value="https://www.pricetravel.com.mx"/>
+  	<parameter name="browser" value="chrome"/>
+  	<classes>
+  		<class name="testcases.pt.smook.TC_HPHotel">
+  		</class>
+  	</classes>
+  </test>
+  
+  <test name="HPPTCOM">
+  	<parameter name="url" value="https://www.pricetravel.com"/>
+  	<parameter name="browser" value="chrome"/>
+  	<classes>
+  		<class name="testcases.pt.smook.TC_HPHotel">
+  		</class>
+  	</classes>
+  </test>
+  
+  <test name="HPPTCO">
+  	<parameter name="url" value="https://www.pricetravel.co"/>
+  	<parameter name="browser" value="chrome"/>
+  	<classes>
+  		<class name="testcases.pt.smook.TC_HPHotel">
+  		</class>
+  	</classes>
+  </test>
+</suite> <!-- Suite -->

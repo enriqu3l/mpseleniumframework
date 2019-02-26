@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="HP_Suite">
+  <listeners>
+    <listener class-name="testlisteners.ListenerHealthCheck"></listener>
+  </listeners>
+  
+  <test thread-count="3" name="HP_Reservaciones">
+    <classes>
+      <class name="testcases.pt.smook.TC_HPPTCOMMX_PROD"/>
+      <!-- <class name="testcases.pt.smook.TC_HPPTCOM_PROD"/> -->
+      <!-- <class name="testcases.pt.smook.TC_HPPTCO_PROD"/> -->
+    </classes>
+  </test> <!-- Test -->
+  
+  <test name="HP_HotelesConCambios">
+  	<classes>
+  		<class name="testcases.pt.smook.TC_HPHotelConCambios">
+  			<methods>
+  				<include name="test_HPHotelConCambioDeFecha"/>
+  			</methods>
+  		</class>
+  	</classes>
+  </test>
+  
+  <test name="HP_ReservacionesMobile">
+  	<classes>
+  		<class name="testcases.pt.smook.TC_HP_Mobile">
+  			<methods>
+  				<exclude name="mobile_Safari"/>
+  				<!-- <exclude name="mobile.*"/> -->
+  			</methods>
+  		</class>
+  	</classes>
+  </test>
+</suite> <!-- Suite -->

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Regression_Suite">
+  <listeners>
+    <listener class-name="testlisteners.ListenerRegression"></listener>
+  </listeners>
+  <test name="Test" thread-count="3" parallel="methods">
+    <classes>
+      <class name="testcases.pt.smook.TC_SPAHLWidget"/>
+      <class name="testcases.pt.smook.TC_SPAHLPaging"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
