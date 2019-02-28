@@ -1,5 +1,7 @@
 package dummy;
 
+import config.FWConfig;
+
 public class dummy {
 
 	public static void main(String[] args) {
@@ -163,7 +165,9 @@ public class dummy {
 		System.out.println("Valleys: "+valley);
 		*/
 		
+		String path = System.getProperty("user.dir") + FWConfig.PATH_INPUTDATA + "pt\\HPHotelResData.xlsx";
 		
+		System.out.println(path);
 		
 		
 	}

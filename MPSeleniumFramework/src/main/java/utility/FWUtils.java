@@ -6,13 +6,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import config.FWConfig;
+import helpers.LinkStatus;
+
 public class FWUtils {
+	private static Logger logger = LogManager.getLogger(FWUtils.class);
 
 	// Check if a element is present
 	public static boolean existsElement(WebDriver driver, By by) {
@@ -50,11 +56,14 @@ public class FWUtils {
 		return (By) we;
 	}
 
+	//++++++++++++++++ ScreenShots +++++++++++++++++++
+	
 	// Guardar un ScreenShot
 	public static void ScreenShot(WebDriver d) {
 		File src = ((TakesScreenshot) d).getScreenshotAs(OutputType.FILE);
 		try {
-			FileUtils.copyFile(src, new File("C:/Selenium/Test/Screen" + System.currentTimeMillis() + ".png"));
+			String filePath = System.getProperty("user.dir") + FWConfig.PATH_OUTPUTDATA_SCREENSHOOTS_FAILURES;
+			FileUtils.copyFile(src, new File(filePath + "Screen_"+ System.currentTimeMillis() + ".png"));
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		}
@@ -64,8 +73,9 @@ public class FWUtils {
 	public static void ScreenShot(WebDriver d, String _name) {
 		File src = ((TakesScreenshot) d).getScreenshotAs(OutputType.FILE);
 		try {
+			String filePath = System.getProperty("user.dir") + FWConfig.PATH_OUTPUTDATA_SCREENSHOOTS_FAILURES;
 			FileUtils.copyFile(src,
-					new File("C:/PTFrameworkData/Screen_" + _name + System.currentTimeMillis() + ".png"));
+					new File(filePath + _name + "_" + System.currentTimeMillis() + ".png"));
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		}
@@ -100,5 +110,18 @@ public class FWUtils {
 			driver.switchTo().window(browserTabs.get(browserTabs.size()-1)); // La primer tab comienza con 0
 			System.out.println("Switching to tab: "+browserTabs.size());
 		}
+	}
+	
+	//++++++++++++++++ BrokenLinks +++++++++++++++++++
+	public static int checkBrokenLinks(List<WebElement> links) {
+		logger.trace("Number of links: "+links.size());
+		LinkStatus.Initialize();
+		for(WebElement link : links) {
+			String URL = link.getAttribute("href");
+			LinkStatus.verifyLink(URL);
+		}
+		int brokenLinks = LinkStatus.getBrokenLinksStatus().size();
+		logger.trace("Number of broken links: "+brokenLinks);
+		return brokenLinks;
 	}
 }

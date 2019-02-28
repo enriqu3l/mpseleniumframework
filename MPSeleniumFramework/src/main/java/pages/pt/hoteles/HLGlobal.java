@@ -14,13 +14,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import config.FWConfig;
-import pages.pt.hoteles.components.HLWidget;
 import utility.BasicUtils;
 
 public class HLGlobal {
 	private WebDriver driver;
 	private WebDriverWait wait;
-	private static Logger logger = LogManager.getLogger(HLWidget.class);
+	private static Logger logger = LogManager.getLogger(HLGlobal.class);
 
 	public HLGlobal(WebDriver _driver) {
 		this.driver = _driver;

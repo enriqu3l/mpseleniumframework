@@ -2,6 +2,7 @@ package pages.pt.general;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
@@ -11,29 +12,34 @@ import org.testng.Assert;
 
 import config.FWConfig;
 import pages.pt.Pages;
+import utility.FWUtils;
 
-public class ConsultaItinerario {
+public class IniciarSesionPage {
 	private WebDriverWait wait;
 	private WebDriver driver;
-	private static Logger logger = LogManager.getLogger(ConsultaItinerario.class);
+	private static Logger logger = LogManager.getLogger(IniciarSesionPage.class);
 	
 	//Constructor
-	public ConsultaItinerario(WebDriver _driver){
+	public IniciarSesionPage(WebDriver _driver){
 		Assert.assertFalse(null==_driver,"La variable 'driver' es null");
 		this.driver = _driver;
 		this.wait = new WebDriverWait(_driver,FWConfig.WAIT_PT);
 		PageFactory.initElements(new AjaxElementLocatorFactory(_driver, FWConfig.WAITPF_PT),this);
 		//Esperar a que la url sea la correcta
-		wait.until(ExpectedConditions.urlContains("/ayuda/consultar-itinerario"));
+		wait.until(ExpectedConditions.urlContains("/clientes"));
 		logger.trace("--->CurrentURL:"+driver.getCurrentUrl());
 	}
 	
 	public void goTo() {
-		Pages.topnav(driver).clickConsultaItinerario();
+		Pages.topnav(driver).clickPuntosDeAtencion();
 	}
 	
 	public boolean isAt() {
 		//Verificar que estoy en esta pagina
-		return driver.getTitle().contains("Consultar itinerario");
+		return driver.getTitle().contains("Iniciar sesión");
+	}
+	
+	public int checkBrokenLinks() {
+		return FWUtils.checkBrokenLinks(driver.findElements(new By.ByTagName("a")));
 	}
 }

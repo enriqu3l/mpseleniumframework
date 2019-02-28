@@ -1,4 +1,4 @@
-package dataproviders.pt;
+package dataproviders.ptmobile;
 
 import org.testng.annotations.DataProvider;
 
@@ -8,7 +8,7 @@ import valueobjects.VOClient;
 import valueobjects.VOCreditCard;
 import valueobjects.VOResData;
 
-public class Provider {
+public class MobileProvider {
 
 	@DataProvider(name = "hpHotelProvider")
 	public Object[][] hpHotelProvider() {

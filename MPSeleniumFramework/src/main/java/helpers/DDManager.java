@@ -14,13 +14,6 @@ import valueobjects.VOCreditCard;
 import valueobjects.VOResData;
 
 public class DDManager {
-	/*Ya no usare resources internos, ahora los archivos estaran fuera del proyecto
-	public static String rHotelResData = "SourceDataFiles/HotelResData.xlsx";
-	public static String rCreditCardData = "SourceDataFiles/CreditCardsData.xlsx";
-	public static String rClientData = "SourceDataFiles/ClientData.xlsx";
-	public static String rLocatorsGenerated = "SourceDataFiles/LocatorsGenerated.xlsx";
-	*/
-	
 	//URGENTE!!!!
 	//No olvidar mencionar que los arhivos de excel necesitan eliminar las filas que queden vacias
 	//cada que se edite el archivo, esto porque si las funciones detectan que hay algo como: "" dentro
@@ -28,7 +21,7 @@ public class DDManager {
 	
 	//------------------------- HOTEL RES ------------------------------
 	public static VOResData getResDataDefault(String file) {
-		String filePath = FWConfig.PATH_DATASOURCE+file;
+		String filePath = System.getProperty("user.dir") + FWConfig.PATH_INPUTDATA_PT + file;
 		int defaultRow = 1; //Para leer el primer registro del archivo
 		VOResData voHotelRes = new VOResData();
 		voHotelRes.setDataUsingList(ExcelUtils.getRow(filePath, defaultRow));
@@ -36,7 +29,7 @@ public class DDManager {
 	}//EndFunction
 	
 	public  static VOResData getResData(String file,int row) {
-		String filePath = FWConfig.PATH_DATASOURCE+file;
+		String filePath = System.getProperty("user.dir") + FWConfig.PATH_INPUTDATA_PT+file;
 		//Candado que limita los valores que puede tener la variable row
 		int max = ExcelUtils.getRowCount(filePath)-1;
 		if(row<=0){row=1;}
@@ -47,7 +40,7 @@ public class DDManager {
 	}//EndFunction
 	
 	public  static VOResData getResData(String file,String cellValue) {
-		String filePath = FWConfig.PATH_DATASOURCE+file;
+		String filePath = System.getProperty("user.dir") + FWConfig.PATH_INPUTDATA_PT+file;
 		if(cellValue.isEmpty()){
 			System.out.println("Error. No se puede buscar un valor vacio!");
 			return null;
@@ -58,7 +51,7 @@ public class DDManager {
 	}//EndFunction
 	
 	public static VOResData getResDataRandom(String file) {
-		String filePath = FWConfig.PATH_DATASOURCE+file;
+		String filePath = System.getProperty("user.dir") + FWConfig.PATH_INPUTDATA_PT+file;
 		int min = 1;  //Comienza en 1 porque la fila de cabecera es la 0
 		int max = ExcelUtils.getRowCount(filePath)-1; //Le resto 1 porque la primer fila es la 0
 		//Asi se obtiene un numero random entre valor min y max:
@@ -74,14 +67,14 @@ public class DDManager {
 	
 	//------------------------- CLIENT DATA ------------------------------
 	public static VOClient getClientDataDefault(String file) {
-		String filePath = FWConfig.PATH_DATASOURCE+file;
+		String filePath = System.getProperty("user.dir") + FWConfig.PATH_INPUTDATA_PT+file;
 		int defaultRow = 1; //Para leer el primer registro del archivo
 		VOClient voClient = new VOClient();
 		voClient.setDataUsingList(ExcelUtils.getRow(filePath, defaultRow));
 		return voClient;
 	}
 	public static VOClient getClientData(String file, int row) {
-		String filePath = FWConfig.PATH_DATASOURCE+file;
+		String filePath = System.getProperty("user.dir") + FWConfig.PATH_INPUTDATA_PT+file;
 		//Candado que limita los valores que puede tener la variable row
 		int max = ExcelUtils.getRowCount(filePath)-1;
 		if(row<=0){row=1;}
@@ -92,7 +85,7 @@ public class DDManager {
 	}
 	
 	public static VOClient getClientRandom(String file) {
-		String filePath = FWConfig.PATH_DATASOURCE+file;
+		String filePath = System.getProperty("user.dir") + FWConfig.PATH_INPUTDATA_PT+file;
 		int min = 1;
 		int max = ExcelUtils.getRowCount(filePath)-1; //Le resto 1 porque la primer fila es la 0
 		//Asi se obtiene un numero random entre valor min y max.
@@ -107,7 +100,7 @@ public class DDManager {
 	
 	//-------------------------CREDIT CARD------------------------------
 	public static VOCreditCard getCreditCardDefault(String file) {
-		String filePath = FWConfig.PATH_DATASOURCE+file;
+		String filePath = System.getProperty("user.dir") + FWConfig.PATH_INPUTDATA_PT+file;
 		int row = 1; //Hardcodeada para que lea el primer registro del archivo excel
 		VOCreditCard voCreditCard = new VOCreditCard();
 		voCreditCard.setDataUsingList(ExcelUtils.getRow(filePath, row));
@@ -115,7 +108,7 @@ public class DDManager {
 	}
 	
 	public static VOCreditCard getCreditCardDefault() {
-		String filePath = FWConfig.PATH_DATASOURCE+FWConfig.FILE_CREDITCARDSDATA;
+		String filePath = System.getProperty("user.dir") + FWConfig.PATH_INPUTDATA_PT+FWConfig.FILE_CREDITCARDSDATA;
 		int row = 1; //Hardcodeada para que lea el primer registro del archivo excel
 		VOCreditCard voCreditCard = new VOCreditCard();
 		voCreditCard.setDataUsingList(ExcelUtils.getRow(filePath, row));
@@ -123,7 +116,7 @@ public class DDManager {
 	}//EndFunction
 	
 	public static VOCreditCard getCreditCard(int row) {
-		String filePath = FWConfig.PATH_DATASOURCE+FWConfig.FILE_CREDITCARDSDATA;
+		String filePath = System.getProperty("user.dir") + FWConfig.PATH_INPUTDATA_PT+FWConfig.FILE_CREDITCARDSDATA;
 		//Candado que limita los valores que puede tener la variable row
 		int max = ExcelUtils.getRowCount(filePath)-1;
 		if(row<=0){row=1;}
@@ -135,7 +128,7 @@ public class DDManager {
 	}
 	
 	public static VOCreditCard getCreditCardRandom() {
-		String filePath = FWConfig.PATH_DATASOURCE+FWConfig.FILE_CREDITCARDSDATA;
+		String filePath = System.getProperty("user.dir") + FWConfig.PATH_INPUTDATA_PT+FWConfig.FILE_CREDITCARDSDATA;
 		int min = 1;
 		int max = ExcelUtils.getRowCount(filePath)-1; //Le resto 1 porque la primer fila es la 0
 		//Asi se obtiene un numero random entre valor min y max.
@@ -152,7 +145,7 @@ public class DDManager {
 	
 	//Necesito verificar si funciona correctamente 
 	public static boolean saveLocator(String locator) {
-		String filePath = FWConfig.PATH_DATASOURCE+FWConfig.FILE_LOCATORSGENERATED;
+		String filePath = System.getProperty("user.dir") + FWConfig.PATH_INPUTDATA_PT+FWConfig.FILE_LOCATORSGENERATED;
 		List<String> data = new ArrayList<String>();
 		data.add(locator);
 		data.add(LocalDateTime.now().toString("dd/MM/yyyy_HH:mm:ss"));
@@ -174,20 +167,20 @@ public class DDManager {
 	 * @return String con una URL de la LP
 	 */
 	public static String getLandingPageHLDefault(String file) {
-		String filePath = FWConfig.PATH_DATASOURCE+file;
+		String filePath = System.getProperty("user.dir") + FWConfig.PATH_INPUTDATA_PT+file;
 		int defaultRow = 1; //Para leer el primer registro del archivo
 		List<String> data = ExcelUtils.getRow(filePath, defaultRow);
 		return BasicUtils.createUrlLandingPageHL(data);
 	}
 	
 	public static String getLandingPageHL(String file, int row) {
-		String filePath = FWConfig.PATH_DATASOURCE+file;
+		String filePath = System.getProperty("user.dir") + FWConfig.PATH_INPUTDATA_PT+file;
 		List<String> data = ExcelUtils.getRow(filePath, row);
 		return BasicUtils.createUrlLandingPageHL(data);
 	}
 	
 	public static String getLandingPageHL(String file, String cellValue) {
-		String filePath = FWConfig.PATH_DATASOURCE+file;
+		String filePath = System.getProperty("user.dir") + FWConfig.PATH_INPUTDATA_PT+file;
 		List<String> data = ExcelUtils.getRow(filePath, cellValue);
 		return BasicUtils.createUrlLandingPageHL(data);
 	}

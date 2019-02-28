@@ -1,4 +1,4 @@
-package pages.pt.ofertas;
+package pages.pt.general;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,29 +14,29 @@ import config.FWConfig;
 import pages.pt.Pages;
 import utility.FWUtils;
 
-public class HomeOfertasPage {
+public class AyudaPage {
 	private WebDriverWait wait;
 	private WebDriver driver;
-	private static Logger logger = LogManager.getLogger(HomeOfertasPage.class);
+	private static Logger logger = LogManager.getLogger(AyudaPage.class);
 	
 	//Constructor
-	public HomeOfertasPage(WebDriver _driver){
+	public AyudaPage(WebDriver _driver){
 		Assert.assertFalse(null==_driver,"La variable 'driver' es null");
 		this.driver = _driver;
 		this.wait = new WebDriverWait(_driver,FWConfig.WAIT_PT);
 		PageFactory.initElements(new AjaxElementLocatorFactory(_driver, FWConfig.WAITPF_PT),this);
 		//Esperar a que la url sea la correcta
-		wait.until(ExpectedConditions.urlContains("/ofertas"));
+		wait.until(ExpectedConditions.urlContains("/ayuda"));
 		logger.trace("--->CurrentURL:"+driver.getCurrentUrl());
 	}
 	
 	public void goTo() {
-		Pages.topnav(driver).clickOfertas();
+		Pages.topnav(driver).clickAyuda();
 	}
 	
 	public boolean isAt() {
 		//Verificar que estoy en esta pagina
-		return driver.getTitle().contains("Encuentra las mejores ofertas y viaja ahora");
+		return driver.getTitle().contains("Sección de Ayuda");
 	}
 	
 	public int checkBrokenLinks() {

@@ -1,4 +1,4 @@
-package pages.pt.hoteles;
+package pages.pt.hoteles.components;
 
 import java.util.List;
 
@@ -22,9 +22,14 @@ import org.testng.Assert;
 import config.FWConfig;
 import helpers.JSWaiter;
 import helpers.WaitFor;
+import pages.pt.hoteles.HLGlobal;
 import utility.BasicUtils;
 import utility.FWUtils;
 import valueobjects.VOResData;
+
+//ATENCION!!!!!!!!!
+//SE COPIO EL CONTENIDO DE LA CLASE HLWIDGET
+//AUN NO SE HA DESARROLLADO ESTA CLASE.
 
 public class RLWidget extends HLGlobal {
 	private WebDriver driver;

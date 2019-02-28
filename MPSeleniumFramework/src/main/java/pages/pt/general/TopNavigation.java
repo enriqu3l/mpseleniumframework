@@ -29,7 +29,7 @@ public class TopNavigation{
 	}
 	
 	//-------------------- TOP LINKS -----------------------
-	@FindAll({@FindBy(how=How.CSS, using=".navbar-header a"), @FindBy(how=How.CSS, using="#logo a")})
+	@FindAll({@FindBy(how=How.CSS, using=".navbar-header a"), @FindBy(how=How.CSS, using="#logo a"), @FindBy(how=How.CSS, using=".site-title a")})
 	private WebElement logo;
 	
 	@FindBy(how=How.ID, using="phoneLang-toggle")
@@ -54,7 +54,7 @@ public class TopNavigation{
 	@FindBy(how=How.CSS, using=".pt-globalNav .container .nav li")
 	private List<WebElement> lGlobalNav;
 	
-	@FindAll({@FindBy(how=How.CSS, using=".pt-globalNav .container .nav"), @FindBy(how=How.CSS, using="#navWrap .nav")})
+	@FindAll({@FindBy(how=How.CSS, using=".pt-globalNav .container .nav"), @FindBy(how=How.CSS, using="#navWrap .nav"), @FindBy(how=How.ID, using="menu-price-travel")})
 	private WebElement globalNav;
 	
 	@FindBy(how=How.ID, using="q")
@@ -147,8 +147,8 @@ public class TopNavigation{
 	}
 	
 	public void typeAndSubmitSearch(String inputData) {
-		searchInput.sendKeys(inputData);
-		searchInput.sendKeys(Keys.ENTER);
+		typeSearch(inputData);
+		typeEnterSearch();
 	}
 	
 	public void clickSearchButton() {

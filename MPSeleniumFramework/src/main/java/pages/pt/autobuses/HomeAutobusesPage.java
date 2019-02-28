@@ -2,6 +2,7 @@ package pages.pt.autobuses;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
@@ -11,7 +12,7 @@ import org.testng.Assert;
 
 import config.FWConfig;
 import pages.pt.Pages;
-import pages.pt.general.TopNavigation;
+import utility.FWUtils;
 
 public class HomeAutobusesPage {
 	private WebDriverWait wait;
@@ -35,5 +36,9 @@ public class HomeAutobusesPage {
 	
 	public boolean isAt() {
 		return driver.getTitle().contains("Reserva autobuses");
+	}
+	
+	public int checkBrokenLinks() {
+		return FWUtils.checkBrokenLinks(driver.findElements(new By.ByTagName("a")));
 	}
 }

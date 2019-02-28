@@ -13,6 +13,14 @@
   	</classes>
   </test>
   
+  <test name="BrokenLinks">
+  	<parameter name="url" value="https://www.pricetravel.com.mx"/>
+  	<parameter name="browser" value="chrome"/>
+  	<classes>
+  		<class name="testcases.pt.smook.TC_BrokenLinks"/>
+  	</classes>
+  </test>
+  
   <test name="HPHotel">
   	<parameter name="url" value="https://www.pricetravel.com.mx"/>
   	<parameter name="browser" value="chrome"/>

@@ -2,6 +2,7 @@ package pages.pt.checkout;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -53,6 +54,10 @@ public class ThankYouPage {
 	@FindBy(how=How.LINK_TEXT, using="Regresar a la página principal")
 	WebElement linkReturnToMainPage;
 	
+	public int checkBrokenLinks() {
+		return FWUtils.checkBrokenLinks(driver.findElements(new By.ByTagName("a")));
+	}
+	
 	public void verifyCheckOutCompleted(){
 		wait.until( ExpectedConditions.visibilityOf(locator));
 		Assert.assertTrue(message.getText().contains("Gracias"),"LAF>>>No se encontro el mensaje de: Gracias");
@@ -71,7 +76,7 @@ public class ThankYouPage {
 	}
 	
 	public void saveScreenShot() {
-		FWUtils.ScreenShot(driver, locator.getText(), FWConfig.PATH_SCREENSHOOT_LOCATORS);
+		FWUtils.ScreenShot(driver, locator.getText());
 	}
 	
 	public void saveLocator() {

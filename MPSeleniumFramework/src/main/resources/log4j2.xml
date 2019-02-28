@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="WARN">
 	<Properties>
-		<Property name="basePath">C:/PTFrameworkData/Logs</Property>
+		<Property name="basePath">./outputdata/logs</Property>
 	</Properties>
 	<Appenders>
 		<RollingFile name="File"
@@ -34,6 +34,9 @@
 			<AppenderRef ref="File" />
 		</Logger>
 		<Logger name="testlisteners" level="trace" additivity="true">
+			<AppenderRef ref="File" />
+		</Logger>
+		<Logger name="utility" level="trace" additivity="true">
 			<AppenderRef ref="File" />
 		</Logger>
 		<Root level="trace">

@@ -68,7 +68,7 @@ public class ThankYouPage {
 	}
 	
 	public void saveScreenShot() {
-		FWUtils.ScreenShot(driver, locator.getText(), FWConfig.PATH_SCREENSHOOT_LOCATORS);
+		FWUtils.ScreenShot(driver, locator.getText());
 	}
 	
 	public void saveLocator() {

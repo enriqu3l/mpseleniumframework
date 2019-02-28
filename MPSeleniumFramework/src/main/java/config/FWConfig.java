@@ -25,11 +25,21 @@ public class FWConfig {
 	public static final String BASEURL_PTCOM_PROD = "https://www.pricetravel.com";
 	public static final String BASEURL_PTCO_PROD = "https://www.pricetravel.co";
 	
-	//Resources Paths
-	public static final String PATH_DATASOURCE = "C:\\PTFrameworkData\\SourceDataFiles\\";
-	public static final String PATH_SCREENSHOOT = "C:\\PTFrameworkData\\Screenshots\\";
-	public static final String PATH_SCREENSHOOT_FAILURES = "C:\\PTFrameworkData\\Screenshots\\Failures\\";
-	public static final String PATH_SCREENSHOOT_LOCATORS = "C:\\PTFrameworkData\\Screenshots\\Locators\\";
+	//Relative Paths
+	public static final String PATH_INPUTDATA = "\\inputdata\\";
+	public static final String PATH_OUTPUTDATA = "\\outputdata\\";
+	public static final String PATH_INPUTDATA_PT = "\\inputdata\\pt\\";
+	public static final String PATH_INPUTDATA_PTMOBILE = "\\inputdata\\ptmobile\\";
+	public static final String PATH_INPUTDATA_TB = "\\inputdata\\tb\\";
+	public static final String PATH_OUTPUTDATA_FILES = "\\outputdata\\files\\";
+	public static final String PATH_OUTPUTDATA_LOGS = "\\outputdata\\logs\\";
+	public static final String PATH_OUTPUTDATA_SCREENSHOOTS_FAILURES = "\\outputdata\\screenshots\\failures\\";
+	public static final String PATH_OUTPUTDATA_SCREENSHOOTS_LOCATORS = "\\outputdata\\screenshots\\locators\\";
+	//Static Paths
+	//public static final String PATH_DATASOURCE = "C:\\PTFrameworkData\\SourceDataFiles\\";
+	//public static final String PATH_SCREENSHOOT = "C:\\PTFrameworkData\\Screenshots\\";
+	//public static final String PATH_SCREENSHOOT_FAILURES = "C:\\PTFrameworkData\\Screenshots\\Failures\\";
+	//public static final String PATH_SCREENSHOOT_LOCATORS = "C:\\PTFrameworkData\\Screenshots\\Locators\\";
 	
 	//Files Names
 	public static final String FILE_CLIENTDATA = "ClientData.xlsx";

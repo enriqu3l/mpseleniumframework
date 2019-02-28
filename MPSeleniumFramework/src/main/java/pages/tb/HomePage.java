@@ -12,6 +12,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import config.FWConfig;
+import utility.FWUtils;
 import valueobjects.VOResData;
 
 public class HomePage {
@@ -63,6 +64,9 @@ public class HomePage {
 	@CacheLookup
 	private WebElement Button_search;
 	
+	public int checkBrokenLinks() {
+		return FWUtils.checkBrokenLinks(driver.findElements(new By.ByTagName("a")));
+	}
 	
 	public void setDestin(String text) {
 		Input_destHotel.sendKeys(text);

@@ -2,6 +2,7 @@ package pages.pt.hoteles;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
@@ -10,6 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import config.FWConfig;
+import utility.FWUtils;
 
 public class HomeHotelesPage {
 	private WebDriverWait wait;
@@ -30,5 +32,9 @@ public class HomeHotelesPage {
 	public boolean isAt() {
 		//Verificar que estoy en esta pagina
 		return driver.getTitle().contains("PriceTravel - Viaja fácil, sin pretextos");
+	}
+	
+	public int checkBrokenLinks() {
+		return FWUtils.checkBrokenLinks(driver.findElements(new By.ByTagName("a")));
 	}
 }

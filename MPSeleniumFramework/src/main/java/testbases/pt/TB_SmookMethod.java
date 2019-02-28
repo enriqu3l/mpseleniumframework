@@ -15,45 +15,49 @@ import org.testng.annotations.Parameters;
 import helpers.BrowserFactory;
 import pages.pt.Pages;
 
-public class TB_Smook {
+public class TB_SmookMethod {
 	protected WebDriver driver;
-	protected Logger logger = LogManager.getLogger(TB_Smook.class);
+	protected Logger logger = LogManager.getLogger(TB_SmookMethod.class);
 	protected String gURL = "";
 	protected String gBrowser = "";
 	
 	@BeforeTest
 	@Parameters({"url","browser"})
-	public void setup(String url, String browser, ITestContext itc) {
-		logger.info("************************* Starting BeforeTest ******************************");
+	public void prerequisitos(String url, String browser, ITestContext itc) {
+		logger.info("***************************** Starting @BeforeTest **********************************");
 		Reporter.log("Starting BeforeTest");
-		logger.info("Starting BeforeTest");
 		gURL = url;
 		gBrowser = browser;
 		Assert.assertFalse(gURL.equals(""),"No se ha seteado una URL valida!");
 		Assert.assertFalse(gBrowser.equals(""),"No se ha seteado un browser valido!");
-		logger.trace("URL Seteada: "+gURL);
-		logger.trace("Browser Seteado: "+gBrowser);
-		driver = BrowserFactory.startBrowser(gBrowser, gURL);
-		itc.setAttribute("WebDriver", driver);
-		Pages.setDriver(driver);
+		logger.trace("URL Seteada:"+gURL);
+		logger.trace("Browser Seteado:"+gBrowser);
 	}
 	
 	@BeforeMethod
-	public void BeforeMethod(ITestContext itc) {
-		logger.info("Starting BeforeMethod");
+	public void beforeMethod(ITestContext itc) {
+		logger.info("***************************** Starting @BeforeMethod **********************************");
+		Reporter.log("Starting Browser");
+		driver = BrowserFactory.startBrowser(gBrowser, gURL);
+		itc.setAttribute("WebDriver", driver);
+		Pages.setDriver(driver);
+		Reporter.log("Browser Started");
+		logger.info("Browser Started");
 	}
-
+	
 	@AfterMethod
-	public void AfterMethod(ITestContext itc)
+	public void Close()
 	{
-		logger.info("Starting BeforeMethod");
+		Reporter.log("Closing Browser...");
+		logger.info("Closing Browser...");
+		driver.quit();
 	}
 	
 	@AfterTest
-	public void Close()
+	public void End()
 	{
-		Reporter.log("Closing Browser");
-		logger.info("Closing Browser");
-		driver.quit();
+		Reporter.log("Test Finished");
+		logger.info("Test Finished");
 	}
+	
 }

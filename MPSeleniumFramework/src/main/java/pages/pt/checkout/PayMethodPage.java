@@ -2,6 +2,7 @@ package pages.pt.checkout;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -14,6 +15,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import config.FWConfig;
+import utility.FWUtils;
 import valueobjects.VOCreditCard;
 
 public class PayMethodPage {
@@ -74,6 +76,10 @@ public class PayMethodPage {
 	//------------  pt.co Elements--------------
 	@FindBy(how=How.ID, using="NationalIdCard1")
 	WebElement frmReserveInputNationalIdCard1;
+	
+	public int checkBrokenLinks() {
+		return FWUtils.checkBrokenLinks(driver.findElements(new By.ByTagName("a")));
+	}
 	
 	public void checkCurrentURLPage() {
 		wait.until(ExpectedConditions.urlContains("forma-pago"));

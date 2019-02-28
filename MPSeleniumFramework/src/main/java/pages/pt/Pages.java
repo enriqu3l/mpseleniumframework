@@ -8,6 +8,12 @@ import pages.pt.checkout.PayMethodPage;
 import pages.pt.checkout.ThankYouPage;
 import pages.pt.cruceros.HomeCrucerosPage;
 import pages.pt.general.TopNavigation;
+import pages.pt.general.AttentionPointsPage;
+import pages.pt.general.AyudaPage;
+import pages.pt.general.ConsultaItinerarioPage;
+import pages.pt.general.RevistaPage;
+import pages.pt.general.SearchResultsPage;
+import pages.pt.general.IniciarSesionPage;
 import pages.pt.grupos.HomeGruposPage;
 import pages.pt.home.HomePage;
 import pages.pt.hoteles.HomeHotelesPage;
@@ -82,6 +88,30 @@ public class Pages {
 		return new HomeGruposPage(driver);
 	}
 	
+	public static AttentionPointsPage AttentionPoints() {
+		return new AttentionPointsPage(driver);
+	}
+	
+	public static AyudaPage Ayuda() {
+		return new AyudaPage(driver);
+	}
+	
+	public static ConsultaItinerarioPage ConsultaItinerario() {
+		return new ConsultaItinerarioPage(driver);
+	}
+	
+	public static IniciarSesionPage IniciarSesion() {
+		return new IniciarSesionPage(driver);
+	}
+	
+	public static RevistaPage Revista() {
+		return new RevistaPage(driver);
+	}
+	
+	public static SearchResultsPage SearchResults() {
+		return new SearchResultsPage(driver);
+	}
+	
 	//++++++++++ Hoteles +++++++++++++
 	public static HotelListPage hotelList(){
 		return new HotelListPage(driver);
@@ -115,6 +145,9 @@ public class Pages {
 	public static PackageResDetailPage packageResDetail() {
 		return new PackageResDetailPage(driver);
 	}
+	
+	//+++++++++++ Vuelos +++++++++++++++
+	
 	
 	//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 	//++++++++ En caso de que no se quiera usar la funcion setDriver ++++++++++
@@ -165,6 +198,30 @@ public class Pages {
 	
 	public static HomeGruposPage grupos(WebDriver driver) {
 		return new HomeGruposPage(driver);
+	}
+	
+	public static AttentionPointsPage AttentionPoints(WebDriver driver) {
+		return new AttentionPointsPage(driver);
+	}
+	
+	public static AyudaPage Ayuda(WebDriver driver) {
+		return new AyudaPage(driver);
+	}
+	
+	public static ConsultaItinerarioPage ConsultaItinerario(WebDriver driver) {
+		return new ConsultaItinerarioPage(driver);
+	}
+	
+	public static IniciarSesionPage IniciarSesion(WebDriver driver) {
+		return new IniciarSesionPage(driver);
+	}
+	
+	public static RevistaPage Revista(WebDriver driver) {
+		return new RevistaPage(driver);
+	}
+	
+	public static SearchResultsPage SearchResults(WebDriver driver) {
+		return new SearchResultsPage(driver);
 	}
 	
 	//++++++++++ Hoteles +++++++++++++

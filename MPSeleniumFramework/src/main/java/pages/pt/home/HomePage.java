@@ -2,6 +2,7 @@ package pages.pt.home;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -9,6 +10,7 @@ import org.testng.Assert;
 
 import config.FWConfig;
 import pages.pt.Pages;
+import utility.FWUtils;
 
 public class HomePage {
 	private WebDriverWait wait;
@@ -25,8 +27,8 @@ public class HomePage {
 		widget = new Widget(driver);
 	}
 	
-	public void goToHard() {
-		driver.get(FWConfig.BASEURL_PTCOMMX_PROD);
+	public void goToHard(String URL) {
+		driver.get(URL);
 		//Esperar a que la url sea la correcta
 		wait.until(ExpectedConditions.urlContains("pricetravel."));
 	}
@@ -37,5 +39,9 @@ public class HomePage {
 
 	public boolean isAt() {
 		return driver.getTitle().contains("PriceTravel - Viaja fácil, sin pretextos");
+	}
+	
+	public int checkBrokenLinks() {
+		return FWUtils.checkBrokenLinks(driver.findElements(new By.ByTagName("a")));
 	}
 }
