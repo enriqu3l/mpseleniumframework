@@ -8,7 +8,7 @@
   	<parameter name="url" value="https://www.pricetravel.com.mx"/>
   	<parameter name="browser" value="firefox"/>
   	<classes>
-  		<class name="testcases.pt.smook.TC_HPHotel">
+  		<class name="testcases.pt.smook.TC_HPVuelo">
   		</class>
   	</classes>
   </test>

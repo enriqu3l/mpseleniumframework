@@ -16,8 +16,8 @@ public class TC_MOBILE_HPHotel extends TB_MobileSmook{
 	public void MobileHPHotel(VOResData voResData, VOClient voClient, VOCreditCard voCreditCard){
 		Reporter.log("Starting test HPHotelHPHotelUsingDataRow");
 		logger.info("Starting test HPHotelHPHotelUsingDataRow");
-		Pages.home().widget.searchHotel(voResData);
-		Pages.home().widget.clickSearchHotelButton();
+		Pages.home().widgetHotel.searchHotel(voResData);
+		Pages.home().widgetHotel.clickSearchButton();
 		Pages.hotelList().list.selectFirstHotelAvailable();
 		Pages.roomList().selectFirstRoom();
 		Pages.resDetail().clearAndFillForm(voClient);

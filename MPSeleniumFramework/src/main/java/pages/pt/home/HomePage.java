@@ -10,6 +10,9 @@ import org.testng.Assert;
 
 import config.FWConfig;
 import pages.pt.Pages;
+import pages.pt.home.components.WidgetFlight;
+import pages.pt.home.components.WidgetHotel;
+import pages.pt.home.components.WidgetPackage;
 import utility.FWUtils;
 
 public class HomePage {
@@ -17,14 +20,18 @@ public class HomePage {
 	private WebDriver driver;
 	private static Logger logger = LogManager.getLogger(HomePage.class);
 	
-	public Widget widget;
+	public WidgetHotel widgetHotel;
+	public WidgetPackage widgetPackage;
+	public WidgetFlight widgetFlight;
 	
 	//Constructor
 	public HomePage(WebDriver _driver){
 		Assert.assertFalse(null==_driver,"La variable 'driver' es null");
 		this.driver = _driver;
 		this.wait = new WebDriverWait(_driver,FWConfig.WAIT_PT);
-		widget = new Widget(driver);
+		widgetHotel = new WidgetHotel(_driver);
+		widgetPackage = new WidgetPackage(_driver);
+		widgetFlight = new WidgetFlight(_driver);
 	}
 	
 	public void goToHard(String URL) {

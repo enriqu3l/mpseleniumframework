@@ -1,5 +1,7 @@
 package dummy;
 
+import org.joda.time.LocalDateTime;
+
 import config.FWConfig;
 
 public class dummy {
@@ -167,7 +169,12 @@ public class dummy {
 		
 		String path = System.getProperty("user.dir") + FWConfig.PATH_INPUTDATA + "pt\\HPHotelResData.xlsx";
 		
-		System.out.println(path);
+		LocalDateTime ldt = LocalDateTime.now();
+		String date1= ldt.toString("yyyy-MM-dd_HH-mm-ss");
+		String date2= ldt.toString("yyyyMMdd_HHmmss");
+		
+		System.out.println(date1);
+		System.out.println(date2);
 		
 		
 	}

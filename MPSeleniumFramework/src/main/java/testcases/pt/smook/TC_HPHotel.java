@@ -16,8 +16,8 @@ public class TC_HPHotel extends TB_Smook{
 	public void HPHotel(VOResData voResData, VOClient voClient, VOCreditCard voCreditCard){
 		Reporter.log("Starting test HPHotel");
 		logger.info("Starting test HPHotel");
-		Pages.home().widget.searchHotel(voResData);
-		Pages.home().widget.clickSearchHotelButton();
+		Pages.home().widgetHotel.searchHotel(voResData);
+		Pages.home().widgetHotel.clickSearchButton();
 		Pages.hotelList().list.selectFirstHotelAvailable();
 		Pages.roomList().selectFirstRoom();
 		Pages.resDetail().clearAndFillForm(voClient);

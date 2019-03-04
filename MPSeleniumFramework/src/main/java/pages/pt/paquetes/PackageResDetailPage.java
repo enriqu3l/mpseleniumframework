@@ -5,7 +5,6 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
@@ -46,53 +45,49 @@ public class PackageResDetailPage {
 	@FindBy(how=How.ID, using="passengerLastName1")
 	WebElement frmReserveInputLastName;
 	
-	@FindBy(how=How.ID, id="ddlPassengerBirthDay1")
+	@FindBy(how=How.ID, using="ddlPassengerBirthDay1")
 	WebElement frmReserveSelectBirthDay;
 	By byfrmReserveSelectBirthDay = new By.ById("ddlPassengerBirthDay1");
 	
-	@FindBy(how=How.ID, id="ddlPassengerBirthMonth1")
+	@FindBy(how=How.ID, using="ddlPassengerBirthMonth1")
 	WebElement frmReserveSelectBirthMonth;
 	
-	@FindBy(how=How.ID, id="ddlPassengerBirthYear1")
+	@FindBy(how=How.ID, using="ddlPassengerBirthYear1")
 	WebElement frmReserveSelectBirthYear;
 	
-	@FindBy(how=How.ID, id="defaultNationality1")
+	@FindBy(how=How.ID, using="defaultNationality1")
 	WebElement frmReserveRadioButtonDefaultNationality;
 	
-	@FindBy(how=How.ID, id="selectNationality1")
+	@FindBy(how=How.ID, using="selectNationality1")
 	WebElement frmReserveRadioButtonSelectNationality;
 	
 	@FindBy(how=How.ID, using="eMail")
 	WebElement frmReserveInputEmail;
 	
 	@FindBy(how=How.ID, using="conMail")
-	@CacheLookup
 	WebElement frmReserveInputConMail;
 	
 	@FindBy(how=How.ID, using="lada")
-	@CacheLookup
 	WebElement frmReserveInputLada;
 	
 	@FindBy(how=How.ID, using="phone")
-	@CacheLookup
 	WebElement frmReserveInputPhone;
 	
 	@FindBy(how=How.ID, using="mobile")
-	@CacheLookup
 	WebElement frmReserveInputMobile;
 	
 	@FindBy(how=How.ID, using="chkConfirm")
-	@CacheLookup
 	WebElement frmReserveCheckBoxChkConfirm;
 	
 	@FindBy(how=How.CSS, using="#frmReserve a.btn.btn-success.btn-form")
-	@CacheLookup
 	WebElement frmReserveButtonContinue;
+	//------------  pt.co Elements --------------
+	@FindBy(how=How.ID, using="NationalIdCard1")
+	WebElement frmReserveInputNationalIdCard;
 	
 	
 	//--------- Resumen de la Reservacion ---------
 	@FindBy(how=How.CSS, using=".aside .card-body .summary-description-name h5")
-	@CacheLookup
 	WebElement summaryHotelName;
 	
 	@FindBy(how=How.CSS, using=".aside .card-body .list-note li:nth-child(1)")
@@ -104,10 +99,6 @@ public class PackageResDetailPage {
 	@FindBy(how=How.CSS, using=".aside .summary-product-rates .summary-table-rates .ap_summaryTotalAmount")
 	WebElement summaryTotalAmount;
 	
-	
-	//------------  pt.co Elements --------------
-	@FindBy(how=How.ID, using="NationalIdCard")
-	WebElement frmReserveInputNationalIdCard;
 	
 	public void checkCurrentURLPage() {
 		wait.until(ExpectedConditions.urlContains("detalles-reservacion"));

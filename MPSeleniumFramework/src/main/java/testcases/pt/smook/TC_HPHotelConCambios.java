@@ -20,8 +20,8 @@ public class TC_HPHotelConCambios extends TB_SmookMethod{
 		VOResData voResData = DDManager.getResDataDefault(FWConfig.FILE_HPHOTELRESDATA);
 		VOCreditCard voCreditCard = DDManager.getCreditCardDefault();
 		VOClient voClient = DDManager.getClientDataDefault(FWConfig.FILE_CLIENTDATA);
-		Pages.home().widget.searchHotel(voResData);
-		Pages.home().widget.clickSearchHotelButton();
+		Pages.home().widgetHotel.searchHotel(voResData);
+		Pages.home().widgetHotel.clickSearchButton();
 		//Lo tengo hardcodeado a Las vegas, necesito hacerlo dinamico con un archivo o una funcion
 		Pages.hotelList().widget.setDestin("Las Vegas (y alrededores)");
 		Pages.hotelList().widget.clickSubmit();
@@ -39,8 +39,8 @@ public class TC_HPHotelConCambios extends TB_SmookMethod{
 		VOResData voResData = DDManager.getResDataDefault(FWConfig.FILE_HPHOTELRESDATA);
 		VOCreditCard DO_CreditCard = DDManager.getCreditCardDefault();
 		VOClient voClient = DDManager.getClientDataDefault(FWConfig.FILE_CLIENTDATA);
-		Pages.home().widget.searchHotel(voResData);
-		Pages.home().widget.clickSearchHotelButton();
+		Pages.home().widgetHotel.searchHotel(voResData);
+		Pages.home().widgetHotel.clickSearchButton();
 		Pages.hotelList().widget.setStartDate(voResData.getStartDateAsLocalDate().plusDays(5).toString());
 		Pages.hotelList().widget.setEndDate(voResData.getEndDateAsLocalDate().plusDays(5).toString());
 		Pages.hotelList().widget.clickSubmit();
@@ -58,8 +58,8 @@ public class TC_HPHotelConCambios extends TB_SmookMethod{
 		VOResData voResData = DDManager.getResDataDefault(FWConfig.FILE_HPHOTELRESDATA);
 		VOCreditCard DO_CreditCard = DDManager.getCreditCardDefault();
 		VOClient voClient = DDManager.getClientDataDefault(FWConfig.FILE_CLIENTDATA);
-		Pages.home().widget.searchHotel(voResData);
-		Pages.home().widget.clickSearchHotelButton();
+		Pages.home().widgetHotel.searchHotel(voResData);
+		Pages.home().widgetHotel.clickSearchButton();
 		Pages.hotelList().widget.setAdults(4);
 		Pages.hotelList().widget.clickSubmit();
 		Pages.hotelList().list.selectFirstHotelAvailable();

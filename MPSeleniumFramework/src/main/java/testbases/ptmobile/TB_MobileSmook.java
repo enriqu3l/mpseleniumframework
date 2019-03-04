@@ -19,7 +19,7 @@ public class TB_MobileSmook {
 	protected WebDriver driver;
 	protected Logger logger = LogManager.getLogger(TB_MobileSmook.class);
 	protected String gtestName;
-	protected String gURL = "";
+	protected String gBaseURL = "";
 	protected String gbrowser = "";
 	
 	@BeforeTest
@@ -28,14 +28,14 @@ public class TB_MobileSmook {
 		logger.info("************************* Starting BeforeTest ******************************");
 		Reporter.log("Starting BeforeTest");
 		logger.info("Starting BeforeTest");
-		gURL = url;
+		gBaseURL = url;
 		gbrowser = browser;
-		Assert.assertFalse(gURL.equals(""),"No se ha seteado una URL valida!");
+		Assert.assertFalse(gBaseURL.equals(""),"No se ha seteado una URL valida!");
 		Assert.assertFalse(gbrowser.equals(""),"No se ha seteado un browser valido!");
-		logger.trace("URL Seteada: "+gURL);
+		logger.trace("URL Seteada: "+gBaseURL);
 		logger.trace("Browser Seteado: "+gbrowser);
 		//driver = MobileBrowserFactory.StartBrowser("NEXUS_5X_API_24","7.0",gbrowser, gURL);
-		driver = MobileBrowserFactory.StartBrowser("Samsung Galaxy S6","5.1",gbrowser, gURL);
+		driver = MobileBrowserFactory.StartBrowser("Samsung Galaxy S6","5.1",gbrowser, gBaseURL);
 		itc.setAttribute("WebDriver", driver);
 		Pages.setDriver(driver);
 	}

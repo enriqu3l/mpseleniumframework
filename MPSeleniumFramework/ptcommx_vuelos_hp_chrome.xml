@@ -6,9 +6,9 @@
   </listeners>
   <test name="HPPTCOMMX">
   	<parameter name="url" value="https://www.pricetravel.com.mx"/>
-  	<parameter name="browser" value="firefox"/>
+  	<parameter name="browser" value="chrome"/>
   	<classes>
-  		<class name="testcases.pt.smook.TC_HPHotel">
+  		<class name="testcases.pt.smook.TC_HPVuelo">
   		</class>
   	</classes>
   </test>

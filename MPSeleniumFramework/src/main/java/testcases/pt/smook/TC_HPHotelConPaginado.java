@@ -20,8 +20,8 @@ public class TC_HPHotelConPaginado extends TB_SmookMethod{
 		VOResData voResData = DDManager.getResDataDefault(FWConfig.FILE_HPHOTELRESDATA);
 		VOCreditCard voCreditCard = DDManager.getCreditCardDefault();
 		VOClient voClient = DDManager.getClientDataDefault(FWConfig.FILE_CLIENTDATA);
-		Pages.home().widget.searchHotel(voResData);
-		Pages.home().widget.clickSearchHotelButton();
+		Pages.home().widgetHotel.searchHotel(voResData);
+		Pages.home().widgetHotel.clickSearchButton();
 		Pages.hotelList().paging.clickOnNextPage();
 		Pages.hotelList().list.selectFirstHotelAvailable();
 		Pages.roomList().selectFirstRoom();

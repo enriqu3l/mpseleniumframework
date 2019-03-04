@@ -24,6 +24,7 @@ public class TC_Navigation extends TB_Smook{
 		Assert.assertTrue(Pages.home().isAt());  //Revisa el titulo de la pagina
 		Pages.topnav().clickHoteles(); //Da click en una opcion del menu superior
 		Assert.assertTrue(Pages.hoteles().isAt()); //Revisa el titulo de la pagina
+		Assert.assertTrue(Pages.browser().currentUrlContains(gBaseURL));  //Validar que la nueva pagina contiene la misma BaseURL
 		logger.info("Ending GoToHotelesTest");
 	}
 	

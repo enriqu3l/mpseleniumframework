@@ -23,7 +23,7 @@ public class Browser {
 	}
 
 	public void navigateForward() {
-		logger.info("Navigate Forward to:");
+		logger.info("Navigate Forward");
 		driver.navigate().forward();
 	}
 
@@ -33,22 +33,26 @@ public class Browser {
 	}
 
 	public void refresh() {
-		logger.info("Refresh:");
+		logger.info("Refresh");
 		driver.navigate().refresh();
 	}
 
 	public String getCurrentURL() {
-		logger.info("get Current Url:");
+		logger.info("get Current Url: "+driver.getCurrentUrl());
 		return driver.getCurrentUrl();
 	}
 
 	public String getTitle() {
-		logger.info("get Title:");
+		logger.info("get Title: "+driver.getTitle());
 		return driver.getTitle();
 	}
 
 	public int getTabsCount() {
-		logger.info("get Tabs Count:");
+		logger.info("get Tabs Count: "+driver.getWindowHandles().size());
 		return driver.getWindowHandles().size();
+	}
+	
+	public boolean currentUrlContains(String url) {
+		return driver.getCurrentUrl().contains(url);
 	}
 }

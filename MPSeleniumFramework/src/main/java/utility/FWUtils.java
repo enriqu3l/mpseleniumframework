@@ -8,7 +8,9 @@ import java.util.List;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.joda.time.LocalDateTime;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -19,7 +21,17 @@ import helpers.LinkStatus;
 
 public class FWUtils {
 	private static Logger logger = LogManager.getLogger(FWUtils.class);
-
+	
+	// Check if a element is present
+	public static boolean existsElement(WebElement element) {
+		try {
+			element.isDisplayed();
+			return true;
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+	}
+	
 	// Check if a element is present
 	public static boolean existsElement(WebDriver driver, By by) {
 		return !driver.findElements(by).isEmpty();
@@ -56,29 +68,36 @@ public class FWUtils {
 		return (By) we;
 	}
 
+	//++++++++++++++++++++++++++++++++++++++++++++++++
 	//++++++++++++++++ ScreenShots +++++++++++++++++++
 	
 	// Guardar un ScreenShot
-	public static void ScreenShot(WebDriver d) {
+	public static String ScreenShot(WebDriver d) {
+		String date = LocalDateTime.now().toString("yyyy-MM-dd_HH-mm-ss");
 		File src = ((TakesScreenshot) d).getScreenshotAs(OutputType.FILE);
+		String filePath = "";
 		try {
-			String filePath = System.getProperty("user.dir") + FWConfig.PATH_OUTPUTDATA_SCREENSHOOTS_FAILURES;
-			FileUtils.copyFile(src, new File(filePath + "Screen_"+ System.currentTimeMillis() + ".png"));
+			filePath = System.getProperty("user.dir") + FWConfig.PATH_OUTPUTDATA_SCREENSHOOTS_FAILURES + "Screen_"+ date + ".png";
+			FileUtils.copyFile(src, new File(filePath));
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		}
+		return filePath;
 	}// End of function
 
 	// Guardar un ScreenShot y permite ponerle un nombre a la captura
-	public static void ScreenShot(WebDriver d, String _name) {
+	public static String ScreenShot(WebDriver d, String _name) {
+		String date = LocalDateTime.now().toString("yyyy-MM-dd_HH-mm-ss");
 		File src = ((TakesScreenshot) d).getScreenshotAs(OutputType.FILE);
+		String filePath = "";
 		try {
-			String filePath = System.getProperty("user.dir") + FWConfig.PATH_OUTPUTDATA_SCREENSHOOTS_FAILURES;
+			filePath = System.getProperty("user.dir") + FWConfig.PATH_OUTPUTDATA_SCREENSHOOTS_FAILURES+ _name + "_" + date + ".png";
 			FileUtils.copyFile(src,
-					new File(filePath + _name + "_" + System.currentTimeMillis() + ".png"));
+					new File(filePath));
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		}
+		return filePath;
 	}// End of function
 
 	/**
@@ -89,16 +108,20 @@ public class FWUtils {
 	 * @param name
 	 * @param path
 	 */
-	public static void ScreenShot(WebDriver d, String _name, String _path) {
+	public static String ScreenShot(WebDriver d, String _name, String _path) {
+		String date = LocalDateTime.now().toString("yyyy-MM-dd_HH-mm-ss");
 		File src = ((TakesScreenshot) d).getScreenshotAs(OutputType.FILE);
+		String filePath = "";
 		try {
-			FileUtils.copyFile(src, new File(_path + "Screen_" + _name + "_" + System.currentTimeMillis() + ".png"));
+			filePath = _path + "Screen_" + _name + "_" + date + ".png";
+			FileUtils.copyFile(src, new File(filePath));
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		}
+		return filePath;
 	}// End of function
 	
-	
+	//++++++++++++++++++++++++++++++++++++++++++++++++++++++
 	//++++++++++++++++ Browser functions +++++++++++++++++++
 	
 	//Swichea a una nueva tab si la hay

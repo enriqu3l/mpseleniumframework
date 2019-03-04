@@ -312,7 +312,7 @@ public class VOResData {
 		this.endDate = LocalDate.now().plusDays(endDay);
 		this.rooms = null;
 		this.rooms = new ArrayList<Map<String, String>>();
-		for(int i=5;i<34;i+=3) {
+		for(int i=5;i<data.size();i+=3) {
 			//Validamos que la columna de Adultos NO este vacia o No tenga valor "0", dado que un cuarto no puede tener 0 adultos
 			if(!(data.get(i).isEmpty() || data.get(i).trim().equals("0"))) {
 				Map<String, String> map = new HashMap<String, String>();
@@ -321,6 +321,8 @@ public class VOResData {
 				map.put(AGEKIDS, data.get(i+2).trim());
 				this.rooms.add(map);
 				map = null;
+			}else {
+				break;
 			}
 		}
 	}

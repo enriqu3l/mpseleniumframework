@@ -18,7 +18,7 @@ import pages.pt.Pages;
 public class TB_SmookMethod {
 	protected WebDriver driver;
 	protected Logger logger = LogManager.getLogger(TB_SmookMethod.class);
-	protected String gURL = "";
+	protected String gBaseURL = "";
 	protected String gBrowser = "";
 	
 	@BeforeTest
@@ -26,11 +26,11 @@ public class TB_SmookMethod {
 	public void prerequisitos(String url, String browser, ITestContext itc) {
 		logger.info("***************************** Starting @BeforeTest **********************************");
 		Reporter.log("Starting BeforeTest");
-		gURL = url;
+		gBaseURL = url;
 		gBrowser = browser;
-		Assert.assertFalse(gURL.equals(""),"No se ha seteado una URL valida!");
+		Assert.assertFalse(gBaseURL.equals(""),"No se ha seteado una URL valida!");
 		Assert.assertFalse(gBrowser.equals(""),"No se ha seteado un browser valido!");
-		logger.trace("URL Seteada:"+gURL);
+		logger.trace("URL Seteada:"+gBaseURL);
 		logger.trace("Browser Seteado:"+gBrowser);
 	}
 	
@@ -38,7 +38,7 @@ public class TB_SmookMethod {
 	public void beforeMethod(ITestContext itc) {
 		logger.info("***************************** Starting @BeforeMethod **********************************");
 		Reporter.log("Starting Browser");
-		driver = BrowserFactory.startBrowser(gBrowser, gURL);
+		driver = BrowserFactory.startBrowser(gBrowser, gBaseURL);
 		itc.setAttribute("WebDriver", driver);
 		Pages.setDriver(driver);
 		Reporter.log("Browser Started");
