@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import config.FWConfig;
+import helpers.JSWaiter;
 import pages.pt.Pages;
 import utility.FWUtils;
 
@@ -39,6 +40,9 @@ public class HomeAutobusesPage {
 	}
 	
 	public int checkBrokenLinks() {
+		//Se lanzan errores de tipo: "stale element reference: element is not attached to the page document"
+		//Cuando se ejecuta esta funcion en paginas que tienen un baner de cuenta regresiva, dado que el banner
+		//de cuenta regresiva esta creamdo y eliminando etiquetas de tipo "a"
 		return FWUtils.checkBrokenLinks(driver.findElements(new By.ByTagName("a")));
 	}
 }

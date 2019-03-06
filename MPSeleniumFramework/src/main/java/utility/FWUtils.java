@@ -75,9 +75,8 @@ public class FWUtils {
 	public static String ScreenShot(WebDriver d) {
 		String date = LocalDateTime.now().toString("yyyy-MM-dd_HH-mm-ss");
 		File src = ((TakesScreenshot) d).getScreenshotAs(OutputType.FILE);
-		String filePath = "";
+		String filePath = System.getProperty("user.dir") + FWConfig.PATH_OUTPUTDATA_SCREENSHOOTS_FAILURES + "Screen_"+ date + ".png";
 		try {
-			filePath = System.getProperty("user.dir") + FWConfig.PATH_OUTPUTDATA_SCREENSHOOTS_FAILURES + "Screen_"+ date + ".png";
 			FileUtils.copyFile(src, new File(filePath));
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
@@ -89,11 +88,9 @@ public class FWUtils {
 	public static String ScreenShot(WebDriver d, String _name) {
 		String date = LocalDateTime.now().toString("yyyy-MM-dd_HH-mm-ss");
 		File src = ((TakesScreenshot) d).getScreenshotAs(OutputType.FILE);
-		String filePath = "";
+		String filePath = System.getProperty("user.dir") + FWConfig.PATH_OUTPUTDATA_SCREENSHOOTS_FAILURES+ _name + "_" + date + ".png";
 		try {
-			filePath = System.getProperty("user.dir") + FWConfig.PATH_OUTPUTDATA_SCREENSHOOTS_FAILURES+ _name + "_" + date + ".png";
-			FileUtils.copyFile(src,
-					new File(filePath));
+			FileUtils.copyFile(src, new File(filePath));
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		}
@@ -111,9 +108,8 @@ public class FWUtils {
 	public static String ScreenShot(WebDriver d, String _name, String _path) {
 		String date = LocalDateTime.now().toString("yyyy-MM-dd_HH-mm-ss");
 		File src = ((TakesScreenshot) d).getScreenshotAs(OutputType.FILE);
-		String filePath = "";
+		String filePath = _path + "Screen_" + _name + "_" + date + ".png";
 		try {
-			filePath = _path + "Screen_" + _name + "_" + date + ".png";
 			FileUtils.copyFile(src, new File(filePath));
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
@@ -137,14 +133,26 @@ public class FWUtils {
 	
 	//++++++++++++++++ BrokenLinks +++++++++++++++++++
 	public static int checkBrokenLinks(List<WebElement> links) {
+		
+		//Se lanzan errores de tipo: "stale element reference: element is not attached to the page document"
+		//Cuando se ejecuta esta funcion en paginas que tienen un baner de cuenta regresiva, dado que el banner
+		//de cuenta regresiva esta creamdo y eliminando etiquetas de tipo "a"
+		
 		logger.trace("Number of links: "+links.size());
 		LinkStatus.Initialize();
 		for(WebElement link : links) {
-			String URL = link.getAttribute("href");
-			LinkStatus.verifyLink(URL);
+			if(null==link.getAttribute("href")) {
+				logger.trace("Got null when try to get Attribute: href");
+			}else if(link.getAttribute("href").isEmpty() || link.getAttribute("href").equals(""))
+			{
+				logger.trace("URL is empty");
+			}else {
+				//logger.trace("URL: "+link.getAttribute("href"));
+				LinkStatus.verifyLink(link.getAttribute("href"));
+			}
 		}
-		int brokenLinks = LinkStatus.getBrokenLinksStatus().size();
-		logger.trace("Number of broken links: "+brokenLinks);
+		int brokenLinks = LinkStatus.getBrokenLinksCount();
+		if(brokenLinks>0){logger.error("Number of broken links: "+brokenLinks);}
 		return brokenLinks;
 	}
 }

@@ -3,8 +3,7 @@ package testcases.pt.smook;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
 
-import config.FWConfig;
-import helpers.DDManager;
+import dataproviders.pt.Provider;
 import pages.pt.Pages;
 import testbases.pt.TB_SmookMethod;
 import valueobjects.VOClient;
@@ -13,13 +12,11 @@ import valueobjects.VOResData;
 
 public class TC_HPHotelConCambios extends TB_SmookMethod{
 	
-	@Test (enabled=true, priority = 1, groups = { "HPHotelConCambios" })
-	public void HPHotelConCambioDeDestino(){
+	@Test (enabled=true, priority = 1, groups = { "HPHotelConCambios" },
+	dataProvider = "hpHotelProvider", dataProviderClass = Provider.class)
+	public void HPHotelConCambioDeDestino(VOResData voResData, VOClient voClient, VOCreditCard voCreditCard){
 		Reporter.log("Starting @HPHotelConCambioDeDestino");
 		logger.info("Starting @HPHotelConCambioDeDestino");
-		VOResData voResData = DDManager.getResDataDefault(FWConfig.FILE_HPHOTELRESDATA);
-		VOCreditCard voCreditCard = DDManager.getCreditCardDefault();
-		VOClient voClient = DDManager.getClientDataDefault(FWConfig.FILE_CLIENTDATA);
 		Pages.home().widgetHotel.searchHotel(voResData);
 		Pages.home().widgetHotel.clickSearchButton();
 		//Lo tengo hardcodeado a Las vegas, necesito hacerlo dinamico con un archivo o una funcion
@@ -32,32 +29,28 @@ public class TC_HPHotelConCambios extends TB_SmookMethod{
 		Pages.payMethod().fillCreditForm(voCreditCard);
 	}
 	
-	@Test (enabled=true, priority = 1, groups = { "HPHotelConCambios" })
-	public void HPHotelConCambioDeFecha(){		
+	@Test (enabled=true, priority = 2, groups = { "HPHotelConCambios" },
+			dataProvider = "hpHotelProvider", dataProviderClass = Provider.class)
+	public void HPHotelConCambioDeFecha(VOResData voResData, VOClient voClient, VOCreditCard voCreditCard){		
 		Reporter.log("Starting @HPHotelConCambioDeFecha");
 		logger.info("Starting @HPHotelConCambioDeFecha");
-		VOResData voResData = DDManager.getResDataDefault(FWConfig.FILE_HPHOTELRESDATA);
-		VOCreditCard DO_CreditCard = DDManager.getCreditCardDefault();
-		VOClient voClient = DDManager.getClientDataDefault(FWConfig.FILE_CLIENTDATA);
 		Pages.home().widgetHotel.searchHotel(voResData);
 		Pages.home().widgetHotel.clickSearchButton();
-		Pages.hotelList().widget.setStartDate(voResData.getStartDateAsLocalDate().plusDays(5).toString());
-		Pages.hotelList().widget.setEndDate(voResData.getEndDateAsLocalDate().plusDays(5).toString());
+		Pages.hotelList().widget.setStartDate(voResData.getStartDateAsLocalDate().plusDays(5).toString("dd/MM/yyyy"));
+		Pages.hotelList().widget.setEndDate(voResData.getEndDateAsLocalDate().plusDays(5).toString("dd/MM/yyyy"));
 		Pages.hotelList().widget.clickSubmit();
 		Pages.hotelList().list.selectFirstHotelAvailable();
 		Pages.roomList().selectFirstRoom();
 		Pages.resDetail().clearAndFillForm(voClient);
 		Pages.resDetail().clickOnContinue();
-		Pages.payMethod().fillCreditForm(DO_CreditCard);
+		Pages.payMethod().fillCreditForm(voCreditCard);
 	}
 	
-	@Test (enabled=true, priority = 1, groups = { "HPHotelConCambios" })
-	public void HPHotelConCambioDeOcupantes(){		
+	@Test (enabled=true, priority = 3, groups = { "HPHotelConCambios" },
+			dataProvider = "hpHotelProvider", dataProviderClass = Provider.class)
+	public void HPHotelConCambioDeOcupantes(VOResData voResData, VOClient voClient, VOCreditCard voCreditCard){		
 		Reporter.log("Starting @HPHotelConCambioDeOcupantes");
 		logger.info("Starting @HPHotelConCambioDeOcupantes");
-		VOResData voResData = DDManager.getResDataDefault(FWConfig.FILE_HPHOTELRESDATA);
-		VOCreditCard DO_CreditCard = DDManager.getCreditCardDefault();
-		VOClient voClient = DDManager.getClientDataDefault(FWConfig.FILE_CLIENTDATA);
 		Pages.home().widgetHotel.searchHotel(voResData);
 		Pages.home().widgetHotel.clickSearchButton();
 		Pages.hotelList().widget.setAdults(4);
@@ -66,6 +59,6 @@ public class TC_HPHotelConCambios extends TB_SmookMethod{
 		Pages.roomList().selectFirstRoom();
 		Pages.resDetail().clearAndFillForm(voClient);
 		Pages.resDetail().clickOnContinue();
-		Pages.payMethod().fillCreditForm(DO_CreditCard);
+		Pages.payMethod().fillCreditForm(voCreditCard);
 	}
 }

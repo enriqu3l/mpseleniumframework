@@ -16,19 +16,16 @@ public class ListenerRegression implements ITestListener{
 
 	@Override
 	public void onTestStart(ITestResult result) {
-		// TODO Auto-generated method stub
 		logger.info("Starting onTestStart");
 	}
 
 	@Override
 	public void onTestSuccess(ITestResult result) {
-		// TODO Auto-generated method stub
 		logger.info("Starting onTestSuccess");
 	}
 
 	@Override
 	public void onTestFailure(ITestResult result) {
-		// TODO Auto-generated method stub
 		logger.info("Starting onTestFailure");
 		logger.info("Fallo la prueba: "+result.getName());
 		
@@ -42,26 +39,21 @@ public class ListenerRegression implements ITestListener{
 
 	@Override
 	public void onTestSkipped(ITestResult result) {
-		// TODO Auto-generated method stub
 		logger.info("Starting onTestSkipped");
 	}
 
 	@Override
 	public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
-		// TODO Auto-generated method stub
 		logger.info("Starting onTestFailedButWithinSuccessPercentage");
 	}
 
 	@Override
 	public void onStart(ITestContext context) {
-		// TODO Auto-generated method stub
 		logger.info("Starting onStart");
 	}
 
 	@Override
 	public void onFinish(ITestContext context) {
-		// TODO Auto-generated method stub
 		logger.info("Starting onFinish");
 	}
-
 }

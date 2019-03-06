@@ -134,7 +134,7 @@ public class TC_Navigation extends TB_Smook{
 		Pages.home().goTo();
 		Assert.assertTrue(Pages.home().isAt());
 		Pages.topnav().clickPuntosDeAtencion();
-		Assert.assertTrue(Pages.AttentionPoints().isAt());
+		Assert.assertTrue(Pages.attentionPoints().isAt());
 		logger.info("Ending goToAttentionPointsTest");
 	}
 	
@@ -145,7 +145,7 @@ public class TC_Navigation extends TB_Smook{
 		Pages.home().goTo();
 		Assert.assertTrue(Pages.home().isAt());
 		Pages.topnav().clickRevista();
-		Assert.assertTrue(Pages.Revista().isAt());
+		Assert.assertTrue(Pages.revista().isAt());
 		logger.info("Ending goToRevistaTest");
 	}
 	
@@ -156,7 +156,7 @@ public class TC_Navigation extends TB_Smook{
 		Pages.home().goTo();
 		Assert.assertTrue(Pages.home().isAt());
 		Pages.topnav().clickConsultaItinerario();
-		Assert.assertTrue(Pages.ConsultaItinerario().isAt());
+		Assert.assertTrue(Pages.consultaItinerario().isAt());
 		logger.info("Ending goToConsultaItinerarioTest");
 	}
 	
@@ -167,7 +167,7 @@ public class TC_Navigation extends TB_Smook{
 		Pages.home().goTo();
 		Assert.assertTrue(Pages.home().isAt());
 		Pages.topnav().clickAyuda();
-		Assert.assertTrue(Pages.Ayuda().isAt());
+		Assert.assertTrue(Pages.ayuda().isAt());
 		logger.info("Ending goToAyudaTest");
 	}
 	
@@ -178,7 +178,7 @@ public class TC_Navigation extends TB_Smook{
 		Pages.home().goTo();
 		Assert.assertTrue(Pages.home().isAt());
 		Pages.topnav().clickIniciarSesion();
-		Assert.assertTrue(Pages.IniciarSesion().isAt());
+		Assert.assertTrue(Pages.iniciarSesion().isAt());
 		logger.info("Ending goToIniciarSesionTest");
 	}
 	
@@ -191,7 +191,7 @@ public class TC_Navigation extends TB_Smook{
 		Pages.home().goTo();
 		Assert.assertTrue(Pages.home().isAt());
 		Pages.topnav().typeAndSubmitSearch("cancun");
-		Assert.assertTrue(Pages.SearchResults().isAt());
+		Assert.assertTrue(Pages.searchResults().isAt());
 		logger.info("Ending searchTest");
 	}
 }

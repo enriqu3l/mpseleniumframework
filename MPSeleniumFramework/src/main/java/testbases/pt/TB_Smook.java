@@ -50,7 +50,7 @@ public class TB_Smook {
 	}
 	
 	@AfterTest
-	public void Close()
+	public void teardown()
 	{
 		Reporter.log("Closing Browser");
 		logger.info("Closing Browser");

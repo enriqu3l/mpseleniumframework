@@ -312,7 +312,8 @@ public class VOResData {
 		this.endDate = LocalDate.now().plusDays(endDay);
 		this.rooms = null;
 		this.rooms = new ArrayList<Map<String, String>>();
-		for(int i=5;i<data.size();i+=3) {
+		int size = data.size()-1;
+		for(int i=5;i<size;i+=3) {
 			//Validamos que la columna de Adultos NO este vacia o No tenga valor "0", dado que un cuarto no puede tener 0 adultos
 			if(!(data.get(i).isEmpty() || data.get(i).trim().equals("0"))) {
 				Map<String, String> map = new HashMap<String, String>();
@@ -326,57 +327,4 @@ public class VOResData {
 			}
 		}
 	}
-	
-	/*
-	List<Map<String, String>> myListOfMaps = new ArrayList<Map<String, String>>();
-    Map<String, String> map1 = new HashMap<String, String>();
-    map1.put("Fname", "Ankur");
-
-    Map<String, String> map2 = new HashMap<String, String>();
-    map2.put("Lname", "Singhal");
-
-    myListOfMaps.add(map1);
-    myListOfMaps.add(map2);
-
-    for (int i = 0 ; i < myListOfMaps.size() ; i++) {
-        Map<String, String> myMap = myListOfMaps.get(i);
-        System.out.println("Data For Map" + i);
-        for (Entry<String, String> entrySet : myMap.entrySet()) {
-            System.out.println("Key = " + entrySet.getKey() + " , Value = " + entrySet.getValue());
-        }
-    }
-	*/
-	
-	
-	/*
-	Map<Long,List<String>> myMap=new HashMap<Long,List<String>>();
-    List<String> myList=new ArrayList<String>();
-    myList.add("abc");
-    myList.add("xyz");
-    myMap.put(new Long(1), myList);
-    for(int i=0;i<myList.size();i++)
-        System.out.println(myMap.get(new Long(1)).get(i));
-	*/
-	
-	
-	/*
-	public void setDataUsingList(List<String> data) {
-		if(data==null || data.isEmpty()){System.out.println("La lista esta vacia");Assert.assertFalse(data.isEmpty());}
-		this.idHotelRes = data.get(0);
-		this.destination = data.get(1);
-		this.startDate = data.get(2);
-		this.endDate = data.get(3);
-		this.adults = Integer.parseInt(data.get(4));
-		this.kids = Integer.parseInt(data.get(5));
-		if(Integer.parseInt(data.get(5)) > 0) {
-			int[] agekids = new int[Integer.parseInt(data.get(5))];
-			for(int i=0;i<Integer.parseInt(data.get(5));i++) {
-				agekids[i]=Integer.parseInt(data.get(6+i));
-			}
-			this.ageKids = agekids;
-		}else {
-			this.ageKids = null;
-		}
-	}
-	*/
 }

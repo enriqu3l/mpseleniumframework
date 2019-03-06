@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Regression_Suite" thread-count="1" parallel="tests">
   <listeners>
-    <listener class-name="testlisteners.ListenerRegression"></listener>
+    <listener class-name="testlisteners.ExtentReportListener"></listener>
   </listeners>
   <test name="SPAWidget" >
   	<parameter name="browser" value="firefox"/>

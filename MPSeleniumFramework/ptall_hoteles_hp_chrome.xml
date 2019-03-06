@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="HP_Suite" thread-count="3" parallel="tests">
   <listeners>
-    <listener class-name="testlisteners.ListenerSmook"></listener>
+    <listener class-name="testlisteners.ExtentReportListener"></listener>
   </listeners>
   
   <test name="HPPTCOMMX">

@@ -3,8 +3,7 @@ package testcases.pt.smook;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
 
-import config.FWConfig;
-import helpers.DDManager;
+import dataproviders.pt.Provider;
 import pages.pt.Pages;
 import testbases.pt.TB_SmookMethod;
 import valueobjects.VOClient;
@@ -13,13 +12,11 @@ import valueobjects.VOResData;
 
 public class TC_HPHotelConPaginado extends TB_SmookMethod{
 	
-	@Test
-	public void HPHotelConCambioDePagina(){
+	@Test (enabled=true, priority = 1, groups = { "HPHotelConPaginado" },
+			dataProvider = "hpHotelProvider", dataProviderClass = Provider.class)
+	public void HPHotelConCambioDePagina(VOResData voResData, VOClient voClient, VOCreditCard voCreditCard){
 		Reporter.log("Starting test HPHotelConCambioDePagina");
 		logger.info("Starting test HPHotelConCambioDePagina");
-		VOResData voResData = DDManager.getResDataDefault(FWConfig.FILE_HPHOTELRESDATA);
-		VOCreditCard voCreditCard = DDManager.getCreditCardDefault();
-		VOClient voClient = DDManager.getClientDataDefault(FWConfig.FILE_CLIENTDATA);
 		Pages.home().widgetHotel.searchHotel(voResData);
 		Pages.home().widgetHotel.clickSearchButton();
 		Pages.hotelList().paging.clickOnNextPage();

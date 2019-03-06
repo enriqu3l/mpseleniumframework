@@ -88,27 +88,27 @@ public class Pages {
 		return new HomeGruposPage(driver);
 	}
 	
-	public static AttentionPointsPage AttentionPoints() {
+	public static AttentionPointsPage attentionPoints() {
 		return new AttentionPointsPage(driver);
 	}
 	
-	public static AyudaPage Ayuda() {
+	public static AyudaPage ayuda() {
 		return new AyudaPage(driver);
 	}
 	
-	public static ConsultaItinerarioPage ConsultaItinerario() {
+	public static ConsultaItinerarioPage consultaItinerario() {
 		return new ConsultaItinerarioPage(driver);
 	}
 	
-	public static IniciarSesionPage IniciarSesion() {
+	public static IniciarSesionPage iniciarSesion() {
 		return new IniciarSesionPage(driver);
 	}
 	
-	public static RevistaPage Revista() {
+	public static RevistaPage revista() {
 		return new RevistaPage(driver);
 	}
 	
-	public static SearchResultsPage SearchResults() {
+	public static SearchResultsPage searchResults() {
 		return new SearchResultsPage(driver);
 	}
 	
@@ -200,27 +200,27 @@ public class Pages {
 		return new HomeGruposPage(driver);
 	}
 	
-	public static AttentionPointsPage AttentionPoints(WebDriver driver) {
+	public static AttentionPointsPage attentionPoints(WebDriver driver) {
 		return new AttentionPointsPage(driver);
 	}
 	
-	public static AyudaPage Ayuda(WebDriver driver) {
+	public static AyudaPage ayuda(WebDriver driver) {
 		return new AyudaPage(driver);
 	}
 	
-	public static ConsultaItinerarioPage ConsultaItinerario(WebDriver driver) {
+	public static ConsultaItinerarioPage consultaItinerario(WebDriver driver) {
 		return new ConsultaItinerarioPage(driver);
 	}
 	
-	public static IniciarSesionPage IniciarSesion(WebDriver driver) {
+	public static IniciarSesionPage iniciarSesion(WebDriver driver) {
 		return new IniciarSesionPage(driver);
 	}
 	
-	public static RevistaPage Revista(WebDriver driver) {
+	public static RevistaPage revista(WebDriver driver) {
 		return new RevistaPage(driver);
 	}
 	
-	public static SearchResultsPage SearchResults(WebDriver driver) {
+	public static SearchResultsPage searchResults(WebDriver driver) {
 		return new SearchResultsPage(driver);
 	}
 	

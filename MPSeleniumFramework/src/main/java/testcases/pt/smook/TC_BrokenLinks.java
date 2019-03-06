@@ -9,183 +9,223 @@ import org.testng.annotations.Test;
 import pages.pt.Pages;
 import testbases.pt.TB_Smook;
 
-public class TC_BrokenLinks extends TB_Smook{
+//Se lanzan errores de tipo: "stale element reference: element is not attached to the page document"
+//Cuando se ejecuta esta funcion en paginas que tienen un baner de cuenta regresiva, dado que el banner
+//de cuenta regresiva esta creando y eliminando etiquetas de tipo "a"
 
-	@Test (enabled=false, priority = 1)
-	public void goToHomePageTest(){
-		Reporter.log("Starting GoToHomePageTest");
-		logger.info("Starting GoToHomePageTest");
+//Solucion 1 - Ejecutar la prueba cuando no hay Banners con cuenta regresiva
+//Solucion 2 - Ejecutar la busqueda de etiquetas "a" solo dentro del contenido intermedio, es decir
+//omitiendo las partes superior(donde se encuentran regularmente los banners) e inferior.
+
+public class TC_BrokenLinks extends TB_Smook{
+	
+	@Test (enabled=true, priority = 1)
+	public void homePageBrokenLinksTest(){
+		Reporter.log("Starting homePageBrokenLinksTest");
+		logger.info("Starting homePageBrokenLinksTest");
 		Pages.home();
 		Assert.assertTrue(Pages.home().isAt());
+		int brokenLinks = Pages.home().checkBrokenLinks();
+		assertTrue(brokenLinks<1,"Links Rotos: "+brokenLinks);
 	}
 	
-	@Test (enabled=false, priority = 2)
-	public void goToHotelesTest(){
-		Reporter.log("Starting GoToHotelesTest");
-		logger.info("Starting GoToHotelesTest");
+	@Test (enabled=true, priority = 2)
+	public void hotelesBrokenLinksTest(){
+		Reporter.log("Starting hotelesBrokenLinksTest");
+		logger.info("Starting hotelesBrokenLinksTest");
 		Pages.home().goTo();
 		Pages.topnav().clickHoteles();
 		Assert.assertTrue(Pages.hoteles().isAt());
-		logger.info("Ending GoToHotelesTest");
+		int brokenLinks = Pages.hoteles().checkBrokenLinks();
+		assertTrue(brokenLinks<1,"Links Rotos: "+brokenLinks);
+		logger.info("Ending hotelesBrokenLinksTest");
 	}
 	
-	@Test (enabled=false, priority = 3)
-	public void goToPaquetesTest(){
-		Reporter.log("Starting GoToPaquetesTest");
-		logger.info("Starting GoToPaquetesTest");
+	@Test (enabled=true, priority = 3)
+	public void paquetesBrokenLinksTest(){
+		Reporter.log("Starting paquetesBrokenLinksTest");
+		logger.info("Starting paquetesBrokenLinksTest");
 		Pages.home().goTo();
 		Pages.topnav().clickPaquetes();
 		Assert.assertTrue(Pages.paquetes().isAt());
-		logger.info("Ending GoToPaquetesTest");
+		int brokenLinks = Pages.paquetes().checkBrokenLinks();
+		assertTrue(brokenLinks<1,"Links Rotos: "+brokenLinks);
+		logger.info("Ending paquetesBrokenLinksTest");
 	}
 	
-	@Test (enabled=false, priority = 4)
-	public void goToVuelosTest(){
-		Reporter.log("Starting GoToVuelosTest");
-		logger.info("Starting GoToVuelosTest");
+	@Test (enabled=true, priority = 4)
+	public void vuelosBrokenLinksTest(){
+		Reporter.log("Starting vuelosBrokenLinksTest");
+		logger.info("Starting vuelosBrokenLinksTest");
 		Pages.home().goTo();
 		Pages.topnav().clickVuelos();
 		Assert.assertTrue(Pages.vuelos().isAt());
-		logger.info("Ending GoToVuelosTest");
+		int brokenLinks = Pages.vuelos().checkBrokenLinks();
+		assertTrue(brokenLinks<1,"Links Rotos: "+brokenLinks);
+		logger.info("Ending vuelosBrokenLinksTest");
 	}
 	
-	@Test (enabled=false, priority = 5)
-	public void goToTrasladosTest(){
-		Reporter.log("Starting GoToTrasladosTest");
-		logger.info("Starting GoToTrasladosTest");
+	@Test (enabled=true, priority = 5)
+	public void trasladosBrokenLinksTest(){
+		Reporter.log("Starting trasladosBrokenLinksTest");
+		logger.info("Starting trasladosBrokenLinksTest");
 		Pages.home().goTo();
 		Pages.topnav().clickTraslados();
 		Assert.assertTrue(Pages.traslados().isAt());
-		logger.info("Ending GoToPaquetesTest");
+		int brokenLinks = Pages.traslados().checkBrokenLinks();
+		assertTrue(brokenLinks<1,"Links Rotos: "+brokenLinks);
+		logger.info("Ending trasladosBrokenLinksTest");
 	}
 	
-	@Test (enabled=false, priority = 6)
-	public void goToToursTest(){
-		Reporter.log("Starting GoToToursTest");
-		logger.info("Starting GoToToursTest");
+	@Test (enabled=true, priority = 6)
+	public void toursBrokenLinksTest(){
+		Reporter.log("Starting toursBrokenLinksTest");
+		logger.info("Starting toursBrokenLinksTest");
 		Pages.home().goTo();
 		Pages.topnav().clickTours();
 		Assert.assertTrue(Pages.tours().isAt());
-		logger.info("Ending GoToToursTest");
+		int brokenLinks = Pages.tours().checkBrokenLinks();
+		assertTrue(brokenLinks<1,"Links Rotos: "+brokenLinks);
+		logger.info("Ending toursBrokenLinksTest");
 	}
 	
-	@Test (enabled=false, priority = 7)
-	public void goToAutosTest(){
-		Reporter.log("Starting GoToAutosTest");
-		logger.info("Starting GoToAutosTest");
+	@Test (enabled=true, priority = 7)
+	public void autosBrokenLinksTest(){
+		Reporter.log("Starting autosBrokenLinksTest");
+		logger.info("Starting autosBrokenLinksTest");
 		Pages.home().goTo();
 		Pages.topnav().clickAutos();
 		Assert.assertTrue(Pages.autos().isAt());
-		logger.info("Ending GoToAutosTest");
+		int brokenLinks = Pages.autos().checkBrokenLinks();
+		assertTrue(brokenLinks<1,"Links Rotos: "+brokenLinks);
+		logger.info("Ending autosBrokenLinksTest");
 	}
 	
 	@Test (enabled=true, priority = 8)
-	public void goToAutobusesTest(){
-		Reporter.log("Starting GoToAutobusesTest");
-		logger.info("Starting GoToAutobusesTest");
+	public void autobusesBrokenLinksTest(){
+		Reporter.log("Starting autobusesBrokenLinksTest");
+		logger.info("Starting autobusesBrokenLinksTest");
 		Pages.home().goTo();
 		Pages.topnav().clickAutobuses();
 		Assert.assertTrue(Pages.autobuses().isAt());
 		int brokenLinks = Pages.autobuses().checkBrokenLinks();
 		assertTrue(brokenLinks<1,"Links Rotos: "+brokenLinks);
-		logger.info("Ending GoToAutobusesTest");
+		logger.info("Ending autobusesBrokenLinksTest");
 	}
 	
 	@Test (enabled=true, priority = 9)
-	public void goToCrucerosTest(){
-		Reporter.log("Starting GoToCrucerosTest");
-		logger.info("Starting GoToCrucerosTest");
+	public void crucerosBrokenLinksTest(){
+		Reporter.log("Starting crucerosBrokenLinksTest");
+		logger.info("Starting crucerosBrokenLinksTest");
 		Pages.home().goTo();
 		Pages.topnav().clickCruceros();
 		Assert.assertTrue(Pages.cruceros().isAt());
-		logger.info("Ending GoToCrucerosTest");
+		int brokenLinks = Pages.cruceros().checkBrokenLinks();
+		assertTrue(brokenLinks<1,"Links Rotos: "+brokenLinks);
+		logger.info("Ending crucerosBrokenLinksTest");
 	}
 	
 	@Test (enabled=true, priority = 10)
-	public void goToOfertasTest(){
-		Reporter.log("Starting GoToOfertasTest");
-		logger.info("Starting GoToOfertasTest");
+	public void ofertasBrokenLinksTest(){
+		Reporter.log("Starting ofertasBrokenLinksTest");
+		logger.info("Starting ofertasBrokenLinksTest");
 		Pages.home().goTo();
 		Pages.topnav().clickOfertas();
 		Assert.assertTrue(Pages.ofertas().isAt());
-		logger.info("Ending GoToOfertasTest");
+		int brokenLinks = Pages.ofertas().checkBrokenLinks();
+		assertTrue(brokenLinks<1,"Links Rotos: "+brokenLinks);
+		logger.info("Ending ofertasBrokenLinksTest");
 	}
 	
 	@Test (enabled=true, priority = 11)
-	public void goToGruposTest(){
-		Reporter.log("Starting GoToGruposTest");
-		logger.info("Starting GoToGruposTest");
+	public void gruposBrokenLinksTest(){
+		Reporter.log("Starting gruposBrokenLinksTest");
+		logger.info("Starting gruposBrokenLinksTest");
 		Pages.home().goTo();
 		Pages.topnav().clickGrupos();
 		Assert.assertTrue(Pages.grupos().isAt());
-		logger.info("Ending GoToGruposTest");
+		int brokenLinks = Pages.grupos().checkBrokenLinks();
+		assertTrue(brokenLinks<1,"Links Rotos: "+brokenLinks);
+		logger.info("Ending gruposBrokenLinksTest");
 	}
 	
 	@Test (enabled=true, priority = 12)
-	public void goToAttentionPointsTest(){
-		Reporter.log("Starting goToAttentionPointsTest");
-		logger.info("Starting goToAttentionPointsTest");
+	public void attentionPointsBrokenLinksTest(){
+		Reporter.log("Starting attentionPointsBrokenLinksTest");
+		logger.info("Starting attentionPointsBrokenLinksTest");
 		Pages.home().goTo();
 		Assert.assertTrue(Pages.home().isAt());
 		Pages.topnav().clickPuntosDeAtencion();
-		Assert.assertTrue(Pages.AttentionPoints().isAt());
-		logger.info("Ending goToAttentionPointsTest");
+		Assert.assertTrue(Pages.attentionPoints().isAt());
+		int brokenLinks = Pages.attentionPoints().checkBrokenLinks();
+		assertTrue(brokenLinks<1,"Links Rotos: "+brokenLinks);
+		logger.info("Ending attentionPointsBrokenLinksTest");
 	}
 	
 	@Test (enabled=true, priority = 13)
-	public void goToRevistaTest(){
-		Reporter.log("Starting goToRevistaTest");
-		logger.info("Starting goToRevistaTest");
+	public void revistaBrokenLinksTest(){
+		Reporter.log("Starting revistaBrokenLinksTest");
+		logger.info("Starting revistaBrokenLinksTest");
 		Pages.home().goTo();
 		Assert.assertTrue(Pages.home().isAt());
 		Pages.topnav().clickRevista();
-		Assert.assertTrue(Pages.Revista().isAt());
-		logger.info("Ending goToRevistaTest");
+		Assert.assertTrue(Pages.revista().isAt());
+		int brokenLinks = Pages.revista().checkBrokenLinks();
+		assertTrue(brokenLinks<1,"Links Rotos: "+brokenLinks);
+		logger.info("Ending revistaBrokenLinksTest");
 	}
 	
 	@Test (enabled=true, priority = 14)
-	public void goToConsultaItinerarioTest(){
-		Reporter.log("Starting goToConsultaItinerarioTest");
-		logger.info("Starting goToConsultaItinerarioTest");
+	public void consultaItinerarioBrokenLinksTest(){
+		Reporter.log("Starting consultaItinerarioBrokenLinksTest");
+		logger.info("Starting consultaItinerarioBrokenLinksTest");
 		Pages.home().goTo();
 		Assert.assertTrue(Pages.home().isAt());
 		Pages.topnav().clickConsultaItinerario();
-		Assert.assertTrue(Pages.ConsultaItinerario().isAt());
-		logger.info("Ending goToConsultaItinerarioTest");
+		Assert.assertTrue(Pages.consultaItinerario().isAt());
+		int brokenLinks = Pages.consultaItinerario().checkBrokenLinks();
+		assertTrue(brokenLinks<1,"Links Rotos: "+brokenLinks);
+		logger.info("Ending consultaItinerarioBrokenLinksTest");
 	}
 	
 	@Test (enabled=true, priority = 15)
-	public void goToAyudaTest(){
-		Reporter.log("Starting goToAyudaTest");
-		logger.info("Starting goToAyudaTest");
+	public void ayudaBrokenLinksTest(){
+		Reporter.log("Starting ayudaBrokenLinksTest");
+		logger.info("Starting ayudaBrokenLinksTest");
 		Pages.home().goTo();
 		Assert.assertTrue(Pages.home().isAt());
 		Pages.topnav().clickAyuda();
-		Assert.assertTrue(Pages.Ayuda().isAt());
-		logger.info("Ending goToAyudaTest");
+		Assert.assertTrue(Pages.ayuda().isAt());
+		int brokenLinks = Pages.ayuda().checkBrokenLinks();
+		assertTrue(brokenLinks<1,"Links Rotos: "+brokenLinks);
+		logger.info("Ending ayudaBrokenLinksTest");
 	}
 	
 	@Test (enabled=true, priority = 16)
-	public void goToIniciarSesionTest(){
-		Reporter.log("Starting goToIniciarSesionTest");
-		logger.info("Starting goToIniciarSesionTest");
+	public void iniciarSesionBrokenLinksTest(){
+		Reporter.log("Starting iniciarSesionBrokenLinksTest");
+		logger.info("Starting iniciarSesionBrokenLinksTest");
 		Pages.home().goTo();
 		Assert.assertTrue(Pages.home().isAt());
 		Pages.topnav().clickIniciarSesion();
-		Assert.assertTrue(Pages.IniciarSesion().isAt());
-		logger.info("Ending goToIniciarSesionTest");
+		Assert.assertTrue(Pages.iniciarSesion().isAt());
+		int brokenLinks = Pages.iniciarSesion().checkBrokenLinks();
+		assertTrue(brokenLinks<1,"Links Rotos: "+brokenLinks);
+		logger.info("Ending iniciarSesionBrokenLinksTest");
 	}
 	
 	//++++++++++ Pruebas del Search ++++++++++
 	
 	@Test (enabled=true, priority = 17)
-	public void searchTest(){
-		Reporter.log("Starting searchTest");
-		logger.info("Starting searchTest");
+	public void searchBrokenLinksTest(){
+		Reporter.log("Starting searchBrokenLinksTest");
+		logger.info("Starting searchBrokenLinksTest");
 		Pages.home().goTo();
 		Assert.assertTrue(Pages.home().isAt());
 		Pages.topnav().typeAndSubmitSearch("cancun");
-		Assert.assertTrue(Pages.SearchResults().isAt());
-		logger.info("Ending searchTest");
+		Assert.assertTrue(Pages.searchResults().isAt());
+		int brokenLinks = Pages.searchResults().checkBrokenLinks();
+		assertTrue(brokenLinks<1,"Links Rotos: "+brokenLinks);
+		logger.info("Ending searchBrokenLinksTest");
 	}
 }

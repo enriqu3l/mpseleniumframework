@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="SmookTest">
   <listeners>
-    <listener class-name="testlisteners.ListenerSmook"></listener>
+    <listener class-name="testlisteners.ExtentReportListener"></listener>
   </listeners>
   
   <test name="Navigation">
@@ -29,11 +29,20 @@
   	</classes>
   </test>
   
-  <test name="HPPaquete">
+  <test name="HPHotelConCambios">
   	<parameter name="url" value="https://www.pricetravel.com.mx"/>
   	<parameter name="browser" value="chrome"/>
   	<classes>
-  		<class name="testcases.pt.smook.TC_HPPaquete"/>
+  		<class name="testcases.pt.smook.TC_HPHotelConCambios"/>
   	</classes>
   </test>
+  
+  <test name="HPHotelConPaginado">
+  	<parameter name="url" value="https://www.pricetravel.com.mx"/>
+  	<parameter name="browser" value="chrome"/>
+  	<classes>
+  		<class name="testcases.pt.smook.TC_HPHotelConPaginado"/>
+  	</classes>
+  </test>
+  
 </suite> <!-- Suite -->

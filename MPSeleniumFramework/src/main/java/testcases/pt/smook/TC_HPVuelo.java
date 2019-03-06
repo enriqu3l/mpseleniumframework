@@ -12,22 +12,20 @@ import valueobjects.VOResData;
 
 public class TC_HPVuelo extends TB_Smook{
 	
-	@Test (enabled=true, priority = 1, dataProvider = "hpPaqueteProvider", dataProviderClass = Provider.class)
-	public void HPPackage(VOResData voResData, VOClient voClient, VOCreditCard voCreditCard){
-		Reporter.log("Starting test HPPackage");
-		logger.info("Starting test HPPackage");
+	@Test (enabled=true, priority = 1, dataProvider = "hpFlightProvider", dataProviderClass = Provider.class)
+	public void HPFlight(VOResData voResData, VOClient voClient, VOCreditCard voCreditCard){
+		Reporter.log("Starting test HPFlight");
+		logger.info("Starting test HPFlight");
 		
 		//------- ATENCION -----------
-		//Este happypath de paquete solo es capaz de hacer reservaciones de 1 solo pasajero
+		//Este happypath de vuelo solo es capaz de hacer reservaciones de 1 solo pasajero
 		//es decir, no esta preparado para hacer reservaciones de 2 o mas personas
 		
 		Pages.home().widgetFlight.searchFlight(voResData);
 		Pages.home().widgetFlight.clickSearchButton();
-		Pages.packageList().listSelectFirstHotelAvailable();
-		Pages.packageRoomList().selectFirstRoom();
-		Pages.packageResDetail().clearAndFillForm(voClient);
-		Pages.packageResDetail().clickContinue();
-		Pages.payMethod().fillCreditForm(voCreditCard);
+		
+		//Aun no se desarrolla!
+		
 		//Pages.payMethod().clickOnCompleteReservation();
 		//Pages.thankYou().verifyCheckOutCompleted();
 	}

@@ -26,13 +26,14 @@ public class LinkStatus {
 		try {
 			URL url = new URL(link);
 			HttpURLConnection urlConnect = (HttpURLConnection) url.openConnection();
-			urlConnect.setConnectTimeout(3000);
+			urlConnect.setConnectTimeout(5000);
 			urlConnect.connect();
 			if(urlConnect.getResponseCode()==200) {
+				//Do nothing
 			}else {
 				message = link+" : "+urlConnect.getResponseMessage()+" : "+urlConnect.getResponseCode(); 
 				brokenLinks.add(message);
-				logger.info(message);
+				logger.error(brokenLinks.size()+" - "+message);
 			}
 		} catch (SocketTimeoutException e) {
 			logger.warn("Found SocketTimeoutException at: "+ link);
@@ -46,5 +47,9 @@ public class LinkStatus {
 	
 	public static List<String> getBrokenLinksStatus(){
 		return brokenLinks;
+	}
+	
+	public static int getBrokenLinksCount(){
+		return brokenLinks.size();
 	}
 }
